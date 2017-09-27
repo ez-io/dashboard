@@ -6,8 +6,27 @@ import {MdIconModule, MdMenuModule, MdButtonModule, MdListModule, MdToolbarModul
 
 import {AppComponent} from './app.component';
 import {CommonModule} from '@angular/common';
-import {RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {BaseModule} from './base/base.module';
+import {ViewportComponent} from './base/viewport/viewport.component';
+import {ManagementModule} from './management/management.module';
+
+const appRoutes: Routes = [
+    {
+        path: '',
+        children: [
+            {
+                path: '',
+                component: ViewportComponent
+            },
+            {
+                path: '', redirectTo: 'login', pathMatch: 'full'
+            }
+        ]
+    },
+    // {path: '**', component: PageNotFoundComponent}
+];
+
 
 @NgModule({
     declarations: [
@@ -15,6 +34,8 @@ import {BaseModule} from './base/base.module';
     ],
     imports: [
         BaseModule,
+        ManagementModule,
+
         BrowserModule,
         BrowserAnimationsModule,
         CommonModule,
@@ -28,7 +49,7 @@ import {BaseModule} from './base/base.module';
         CovalentMenuModule,
         CovalentLayoutModule,
 
-        RouterModule.forRoot([])
+        RouterModule.forRoot(appRoutes)
     ],
     providers: [],
     bootstrap: [AppComponent]

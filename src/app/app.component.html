@@ -1,7 +1,7 @@
 <td-layout>
-    <td-navigation-drawer flex sidenavTitle="Covalent" logo="assets:teradata" name="Firstname Lastname" email="firstname.lastname@company.com">
+    <td-navigation-drawer flex sidenavTitle="ezIO" logo="assets:teradata" name="Firstname Lastname" email="firstname.lastname@company.com">
         <md-nav-list>
-            <a *ngFor="let item of routes" md-list-item>
+            <a *ngFor="let item of routes" md-list-item [routerLink]="item.route">
                 <md-icon>{{item.icon}}</md-icon>
                 {{item.title}}</a>
         </md-nav-list>
@@ -18,13 +18,13 @@
             <button md-icon-button td-menu-button tdLayoutToggle>
                 <md-icon>menu</md-icon>
             </button>
-            <span [routerLink]="['/']" class="cursor-pointer">Cenas</span>
+            <span [routerLink]="['/']" class="cursor-pointer">ezIO</span>
             <span flex></span>
             <button md-icon-button mdTooltip="Edit" (click)="toggleVpSettings()">
                 <md-icon>more_vert</md-icon>
             </button>
         </div>
-        <ez-viewport flex></ez-viewport>
+        <router-outlet></router-outlet>
         <td-layout-footer>
             <div layout="row" layout-align="start center">
                 <span class="md-caption">Copyright &copy; 2017 Teradata. All rights reserved</span>

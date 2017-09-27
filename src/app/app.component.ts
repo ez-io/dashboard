@@ -17,8 +17,8 @@ export class AppComponent {
         title: 'Home',
     }, {
         icon: 'library_books',
-        route: '.',
-        title: 'Documentation',
+        route: 'manage',
+        title: 'Manage',
     }, {
         icon: 'color_lens',
         route: '.',

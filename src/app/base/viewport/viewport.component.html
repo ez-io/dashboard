@@ -1,0 +1,44 @@
+<div layout-gt-sm="row" tdMediaToggle="gt-xs" [mediaClasses]="['push-sm']">
+    <div flex *ngFor="let col of columns" dragula='widget-bag'>
+        <md-card *ngIf="edit">
+            <md-card-title>Column Options</md-card-title>
+            <md-card-actions>
+                <div layout="row">
+                    <button flex md-raised-button color="accent" (click)="removeColumn(col)">
+                        <md-icon>remove_circle_outline</md-icon>
+                    </button>
+                </div>
+            </md-card-actions>
+        </md-card>
+        <md-card>
+            <md-card-title>
+                Products Sales
+            </md-card-title>
+            <md-card-subtitle>usage stats for our products</md-card-subtitle>
+            <md-divider></md-divider>
+            <md-card-content>
+                card content
+            </md-card-content>
+            <md-divider></md-divider>
+            <md-card-actions>
+                <div layout="row">
+                    <button md-icon-button mdTooltip="Edit">
+                        <md-icon>more_vert</md-icon>
+                    </button>
+                </div>
+            </md-card-actions>
+        </md-card>
+    </div>
+    <div flex *ngIf="edit">
+        <md-card>
+            <md-card-title>Add Column</md-card-title>
+            <md-card-actions>
+                <div layout="row">
+                    <button flex md-raised-button color="accent" (click)="addColumn()">
+                        <md-icon>add_circle_outline</md-icon>
+                    </button>
+                </div>
+            </md-card-actions>
+        </md-card>
+    </div>
+</div>

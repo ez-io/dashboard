@@ -1,3 +1,34 @@
-<h1>
-  {{title}}
-</h1>
+<td-layout>
+    <td-navigation-drawer flex sidenavTitle="Covalent" logo="assets:teradata" name="Firstname Lastname" email="firstname.lastname@company.com">
+        <md-nav-list>
+            <a *ngFor="let item of routes" md-list-item>
+                <md-icon>{{item.icon}}</md-icon>
+                {{item.title}}</a>
+        </md-nav-list>
+        <div td-navigation-drawer-menu>
+            <md-nav-list>
+                <a *ngFor="let item of usermenu" md-list-item>
+                    <md-icon>{{item.icon}}</md-icon>
+                    {{item.title}}</a>
+            </md-nav-list>
+        </div>
+    </td-navigation-drawer>
+    <td-layout-nav color="accent">
+        <div td-toolbar-content layout="row" layout-align="start center" flex>
+            <button md-icon-button td-menu-button tdLayoutToggle>
+                <md-icon>menu</md-icon>
+            </button>
+            <span [routerLink]="['/']" class="cursor-pointer">Cenas</span>
+            <span flex></span>
+            <button md-icon-button mdTooltip="Edit" (click)="toggleVpSettings()">
+                <md-icon>more_vert</md-icon>
+            </button>
+        </div>
+        <ez-viewport flex></ez-viewport>
+        <td-layout-footer>
+            <div layout="row" layout-align="start center">
+                <span class="md-caption">Copyright &copy; 2017 Teradata. All rights reserved</span>
+            </div>
+        </td-layout-footer>
+    </td-layout-nav>
+</td-layout>

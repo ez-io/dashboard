@@ -1,6 +1,6 @@
 import { TuxBoardPage } from './app.po';
 
-describe('tux-board App', () => {
+describe('ez-board App', () => {
   let page: TuxBoardPage;
 
   beforeEach(() => {

@@ -1,3 +1,50 @@
-<p>
-  edit works!
-</p>
+<md-card>
+    <md-card-title layout="row" layout-align="start center">
+        <span class="md-title">Module</span>
+    </md-card-title>
+    <md-card-subtitle>Configure your module</md-card-subtitle>
+    <md-divider></md-divider>
+    <md-card-content class="push-bottom-none">
+        <form #moduleControl="ngForm">
+            <div layout="row">
+                <md-form-field flex>
+                    <input mdInput #nameElement #nameControl="ngModel" placeholder="Name" type="text" maxlength="30" name="name" [(ngModel)]="module.name" required>
+                    <md-hint align="start">
+                        <span [hidden]="!nameControl.errors?.required || nameControl.pristine" class="tc-red-600">Required</span>
+                    </md-hint>
+                    <md-hint align="end">{{nameElement.value.length}} / 30</md-hint>
+                </md-form-field>
+            </div>
+            <div layout="row" class="push-top-sm">
+                <md-select placeholder="Device Type" [(ngModel)]="newDevice.type" name="type" flex>
+                    <md-option *ngFor="let deviceType of deviceTypes" [value]="deviceType">{{ deviceType.name }}</md-option>
+                </md-select>
+                <md-form-field flex class="pad-right pad-left" style="padding-top: 8px">
+                    <input mdInput #idElement #idControl="ngModel" placeholder="Id" type="number" name="id" [(ngModel)]="newDevice.id" required>
+                    <md-hint align="start">
+                        <span [hidden]="!idControl.errors?.required || idControl.pristine" class="tc-red-600">Required</span>
+                    </md-hint>
+                </md-form-field>
+                <button md-raised-button color="accent" class="text-upper size-height-50" [disabled]="!idControl.valid" (click)="addDevice()">Add</button>
+            </div>
+            <md-divider></md-divider>
+            <md-list>
+                <ng-template let-item let-last="last" ngFor [ngForOf]="module.devices">
+                    <md-list-item>
+                        <md-icon mdListAvatar>desktop_mac</md-icon>
+                        <h3 mdLine> {{item.type.name}} </h3>
+                        <span flex></span>
+                        <span hide-xs flex="10">{{item.id}}</span>
+                    </md-list-item>
+                    <md-divider *ngIf="!last" md-inset></md-divider>
+                </ng-template>
+            </md-list>
+        </form>
+    </md-card-content>
+    <md-divider></md-divider>
+    <md-card-actions>
+        <div layout="row">
+            <button flex md-raised-button color="accent" [disabled]="!nameControl.valid" (click)="save()" class="text-upper">Save</button>
+        </div>
+    </md-card-actions>
+</md-card>

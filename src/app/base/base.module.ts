@@ -6,6 +6,11 @@ import {CovalentLayoutModule, CovalentMediaModule} from '@covalent/core';
 import {RouterModule} from '@angular/router';
 import {DragulaModule} from 'ng2-dragula';
 import {ViewportService} from './viewport/services/viewport.service';
+import {EventBusService} from './services/event-bus.service';
+import {BaseService} from './services/base.service';
+import {ModuleResolveService} from "app/base/services/resolves/module-resolve.service";
+import {DeviceResolveService} from './services/resolves/device-resolve.service';
+import {ModulesResolveService} from './services/resolves/modules-resolve.service';
 
 @NgModule({
     imports: [
@@ -20,8 +25,10 @@ import {ViewportService} from './viewport/services/viewport.service';
         MdListModule
     ],
     declarations: [ViewportComponent],
-    providers: [ViewportService],
+    providers: [ViewportService, EventBusService, BaseService, ModuleResolveService, ModulesResolveService, DeviceResolveService],
     exports: [ViewportComponent]
 })
 export class BaseModule {
+    constructor(base: BaseService) {
+    }
 }

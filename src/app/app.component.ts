@@ -3,6 +3,7 @@ import {MdIconRegistry} from '@angular/material';
 import {TdMediaService} from '@covalent/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {ViewportService} from './base/viewport/services/viewport.service';
+import {BaseService} from './base/services/base.service';
 
 @Component({
     selector: 'ez-root',
@@ -48,9 +49,15 @@ export class AppComponent {
     },
     ];
     private _vpService: ViewportService;
+    private _baseService: BaseService;
+
+    get newModuleCount(): number {
+        return this._baseService.uConfigModulesCount;
+    }
 
     constructor(public media: TdMediaService, private _iconRegistry: MdIconRegistry,
-                private _domSanitizer: DomSanitizer, vpService: ViewportService) {
+                private _domSanitizer: DomSanitizer, vpService: ViewportService, baseService: BaseService) {
+        this._baseService = baseService;
         this._vpService = vpService;
         this._iconRegistry.addSvgIconInNamespace('assets', 'covalent',
             this._domSanitizer.bypassSecurityTrustResourceUrl(

@@ -20,9 +20,27 @@
             </button>
             <span [routerLink]="['/']" class="cursor-pointer">ezIO</span>
             <span flex></span>
-            <button md-icon-button mdTooltip="Edit" (click)="toggleVpSettings()">
-                <md-icon>more_vert</md-icon>
+            <button md-icon-button [mdMenuTriggerFor]="notificationsMenu">
+                <td-notification-count color="accent" [notifications]="newModuleCount">
+                    <md-icon>apps</md-icon>
+                </td-notification-count>
             </button>
+            <md-menu #notificationsMenu="mdMenu">
+                <td-menu>
+                    <div td-menu-header class="md-subhead">Templates</div>
+                    <md-nav-list dense>
+                        <a md-list-item (click)="toggleVpSettings()">
+                            <md-icon md-list-avatar>system_update_alt</md-icon>
+                            <h4 md-line><span class="text-wrap">Edit Dashboard</span></h4>
+                            <p md-line>a landing page template</p>
+                        </a>
+                        <!--<md-divider></md-divider> -->
+                    </md-nav-list>
+                    <a md-button color="accent" td-menu-footer [routerLink]="['manage','edit',0]" *ngIf="newModuleCount>0">
+                        New Module connected
+                    </a>
+                </td-menu>
+            </md-menu>
         </div>
         <router-outlet></router-outlet>
         <td-layout-footer>

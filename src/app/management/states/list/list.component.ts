@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
     selector: 'ez-list',
@@ -6,38 +7,13 @@ import {Component, OnInit} from '@angular/core';
     styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
+    public modules = [];
 
-    data: any[];
-    columnOptions: any[] = [{
-        name: 'Updated',
-        value: 'updated_at',
-    }, {
-        name: 'Created',
-        value: 'created_at',
-    }];
-    sortKey: string = this.columnOptions[0].value;
-    headers = {};
-    pageSize = 5;
+    constructor(route: ActivatedRoute) {
+        this.modules = route.snapshot.data['modules'];
+    }
 
     ngOnInit(): void {
-        this.columnOptions.forEach((option: any) => {
-            this.headers[option.value] = 'asc';
-        });
-    }
-
-    isASC(sortKey: string): boolean {
-        return this.headers[sortKey] === 'asc';
-    }
-
-    sortBy(sortKey: string): void {
-        let sortedData: any[];
-        if (this.headers[sortKey] === 'asc') {
-            this.headers[sortKey] = 'desc';
-        } else {
-            this.headers[sortKey] = 'asc';
-        }
-
-        this.data = sortedData;
     }
 
 }

@@ -1,8 +1,10 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {CovalentLayoutModule, CovalentMediaModule, CovalentMenuModule} from '@covalent/core';
+import {CovalentLayoutModule, CovalentMediaModule, CovalentMenuModule, CovalentNotificationsModule} from '@covalent/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MdIconModule, MdMenuModule, MdButtonModule, MdListModule, MdToolbarModule, MdTooltipModule} from '@angular/material';
+import {
+    MdIconModule, MdMenuModule, MdButtonModule, MdListModule, MdToolbarModule, MdTooltipModule
+} from '@angular/material';
 
 import {AppComponent} from './app.component';
 import {CommonModule} from '@angular/common';
@@ -48,7 +50,7 @@ const appRoutes: Routes = [
         CovalentMediaModule,
         CovalentMenuModule,
         CovalentLayoutModule,
-
+        CovalentNotificationsModule,
         RouterModule.forRoot(appRoutes)
     ],
     providers: [],
